@@ -4,7 +4,7 @@ import './Mealinfo.css'
 
 
 const Mealinfo = () => {
-  const [info, setInfo] = useState(null); // Initialize state with null
+  const [info, setInfo] = useState(true); // Initialize state with null
   const { mealid } = useParams();
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const Mealinfo = () => {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`);
         const jsonData = await response.json();
         setInfo(jsonData.meals[0]);
+  
       } catch (error) {
         console.error('Error fetching the meal info:', error);
       }
